@@ -46,6 +46,49 @@ bool Merge_List(Sqlist A,Sqlist B,Sqlist &C){
     C.length=k;
     return true;
 }
+//7线性表调换位置
+void Reverse(int t[],int start,int end){
+    int j=(end-start);
+    for(int i=0;i<j/2;i++){
+        int temp=t[i];
+        t[i]=t[j-i];
+        t[j-i]=temp;
+    }
+}
+void ChangeRange(int t[],int n,int m){
+    Reverse(t,0,m+m-1);
+    Reverse(t,0,n);
+    Reverse(t,n,m+n-1);
+
+}
+//8有序数组查找元素要求最快而且和后继交换
+void LocateElem(int t[],int x,int arraySize){
+    int left=0,right=arraySize,mid;
+    while(left<=right){
+        mid=(left+right)/2;
+        if(t[mid]==x){
+            break;
+        }
+        if(t[mid]>x){
+            right=arraySize-1;
+        }else{
+            left=mid+1;
+        }
+
+    }
+    if(t[mid]==x and  mid!=arraySize-1){
+        int temp=t[mid];
+        t[mid]=t[mid+1];
+        t[mid+1]=temp;
+
+    }
+    if(right>left){
+        for(int i=arraySize-1;i>right;i--){
+            t[i+1]=t[i];
+        }
+        t[i+1]=x;
+    }
+}
 void PrintList(const Sqlist &L) {
     if (L.length == 0) {
         cout << "顺序表为空！" << endl;

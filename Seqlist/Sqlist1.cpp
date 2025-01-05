@@ -46,6 +46,8 @@ int LocateElem(Sqlist L,Elemtype e){
     }
     return 0;
 }
+
+//王道算法习题1-4
 bool PopMin(Sqlist& L){
     if(L.length==0){
         return false;
